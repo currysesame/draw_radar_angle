@@ -26,9 +26,9 @@ class draw_blank_radar():
 
 			for angleIndex in range(len(content_list)):
 				self.listAngleIndex.append(int(content_list[angleIndex]))
-			self.angleBinNum = 128
+			
 			for  angleIndex in range(0, len(self.listAngleIndex)):
-				self.theta_ =  2 * (self.listAngleIndex[angleIndex] - self.angleBinNum//2)/self.angleBinNum
+				self.theta_ =  2 * (self.listAngleIndex[angleIndex] - 64)/128
 				if self.theta_ > 0:
 					self.theta_ -= 1
 				else:
@@ -143,7 +143,7 @@ for angleIndex in range(0,230):
 	blank_back.draw_line_l_b(width//2, 400, width//2 + int(300*math.cos(g1_start_angle/angular_ratio)), 400 - int(300*math.sin(g1_start_angle/angular_ratio)))
 	blank_back.draw_line_l_b(width//2, 400, width//2 + int(300*math.cos(g1_end_angle/angular_ratio)), 400 - int(300*math.sin(g1_end_angle/angular_ratio)))
 
-	currentAngle = detected_Angle[angleIndex] + 90
+	currentAngle = detected_Angle[angleIndex]
 	blank_back.draw_line_b(width//2, 400, width//2 + int(300*math.cos(currentAngle/angular_ratio)), 400 - int(300*math.sin(currentAngle/angular_ratio)))
 	blank0 = blank_back.return_image()
 	out.write(blank0)
